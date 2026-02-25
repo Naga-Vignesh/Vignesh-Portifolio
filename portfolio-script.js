@@ -65,25 +65,54 @@ navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Handle initial page load based on URL hash
-window.addEventListener('load', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(`${hash}-page`)) {
-        navigateToPage(hash);
-    } else {
-        navigateToPage('about');
+function setAboutPageActive() {
+    pages.forEach(page => page.classList.remove('active'));
+
+    const aboutPage = document.getElementById('about-page');
+    if (aboutPage) {
+        aboutPage.classList.add('active');
     }
-});
+
+    navLinks.forEach(link => link.classList.remove('active'));
+    const aboutNavLink = document.querySelector('[data-page="about"]');
+    if (aboutNavLink) {
+        aboutNavLink.classList.add('active');
+    }
+
+    navMenu.classList.remove('active');
+    setTimeout(reinitializeScrollAnimations, 100);
+}
+
+function handleHashNavigation() {
+    const hash = window.location.hash.substring(1);
+
+    if (!hash) {
+        navigateToPage('about');
+        return;
+    }
+
+    if (document.getElementById(`${hash}-page`)) {
+        navigateToPage(hash);
+        return;
+    }
+
+    const targetSection = document.getElementById(hash);
+    if (targetSection) {
+        setAboutPageActive();
+        setTimeout(() => {
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+        return;
+    }
+
+    navigateToPage('about');
+}
+
+// Handle initial page load based on URL hash
+window.addEventListener('load', handleHashNavigation);
 
 // Handle browser back/forward buttons
-window.addEventListener('hashchange', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(`${hash}-page`)) {
-        navigateToPage(hash);
-    } else {
-        navigateToPage('about');
-    }
-});
+window.addEventListener('hashchange', handleHashNavigation);
 
 // ===== NAVBAR SCROLL EFFECT =====
 let lastScroll = 0;
@@ -140,10 +169,17 @@ if (heroBackground) {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
+
         if (href.length > 1 && !this.hasAttribute('data-page')) {
             const targetElement = document.querySelector(href);
+
             if (targetElement) {
                 e.preventDefault();
+
+                if (!document.getElementById('about-page')?.classList.contains('active')) {
+                    setAboutPageActive();
+                }
+
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
