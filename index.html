@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Naga Vignesh Marneni — Cybersecurity, Network Security, and Penetration Testing portfolio." />
+  <meta name="theme-color" content="#0a0a0f" />
+  <title>Naga Vignesh — Cybersecurity & Networking</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+</head>
+<body>
+  <!-- Page-load fade overlay -->
+  <div class="page-loader" id="pageLoader" aria-hidden="true"></div>
+
+  <!-- Matrix-rain easter egg canvas -->
+  <canvas id="matrixCanvas" class="matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============= NAVBAR ============= -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo" aria-label="Home">
+        <svg class="logo-hex" viewBox="0 0 100 100" aria-hidden="true">
+          <polygon points="50,3 95,28 95,72 50,97 5,72 5,28" />
+        </svg>
+        <span class="logo-text">NV</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#home" class="nav-link active" data-magnetic>Home</a>
+        <a href="#about" class="nav-link" data-magnetic>About</a>
+        <a href="#skills" class="nav-link" data-magnetic>Skills</a>
+        <a href="#projects" class="nav-link" data-magnetic>Projects</a>
+        <a href="#certifications" class="nav-link" data-magnetic>Certifications</a>
+        <a href="#contact" class="nav-link" data-magnetic>Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <a href="#home" class="drawer-link">Home</a>
+    <a href="#about" class="drawer-link">About</a>
+    <a href="#skills" class="drawer-link">Skills</a>
+    <a href="#projects" class="drawer-link">Projects</a>
+    <a href="#certifications" class="drawer-link">Certifications</a>
+    <a href="#contact" class="drawer-link">Contact</a>
+  </aside>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <main>
+    <!-- ============= HERO ============= -->
+    <section class="hero" id="home">
+      <div id="tsparticles" class="hero-particles" aria-hidden="true"></div>
+      <div class="hero-gradient" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="hero-inner container">
+        <div class="hero-text">
+          <span class="hero-label">
+            <span class="hero-label-dot"></span>
+            Cybersecurity &amp; Networking
+          </span>
+          <h1 class="hero-title">
+            <span class="gradient-text">Naga Vignesh</span>
+          </h1>
+          <h2 class="hero-subtitle">
+            <span class="typed-prefix">I am a</span>
+            <span id="typed" class="typed-target"></span>
+          </h2>
+          <p class="hero-bio">
+            Master's student at Rowan University focused on enterprise networking,
+            offensive security, and defense-in-depth. I build labs, ship secure
+            infrastructure, and rank in the top 4% nationally on the National Cyber League.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary" data-magnetic>
+              <span>View My Work</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="https://drive.google.com/file/d/1sEK-DGw2i6rEwUbTXDGWu9tD7NX-kUgu/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline" data-magnetic>
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-aos="fade-left" data-aos-delay="200">
+          <div class="hex-frame">
+            <div class="hex-rotor" aria-hidden="true"></div>
+            <div class="hex-glow" aria-hidden="true"></div>
+            <div class="hex-clip">
+              <div class="hex-avatar" aria-label="Naga Vignesh portrait placeholder">
+                <span class="hex-avatar-mono">NV</span>
+              </div>
+            </div>
+            <div class="hex-pulse" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-cue-line"></div>
+      </div>
+    </section>
+
+    <!-- ============= ABOUT ============= -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="eyebrow">// 01 — About</span>
+          <h2 class="section-title">Operator profile</h2>
+          <p class="section-sub">Where networking meets offensive security.</p>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text" data-aos="fade-up">
+            <p>
+              I'm a technically motivated graduate student with hands-on experience supporting
+              telecom provisioning and enterprise infrastructure. My focus is on building
+              networks that stay up — and breaking them in lab so they don't break in production.
+            </p>
+            <p>
+              I work across the stack: routing &amp; switching, vulnerability assessment, SOC
+              workflows, and DevOps automation. I'm pursuing my M.S. in Computer Science at
+              Rowan University while stacking certifications (Network+, Security+, CCNA, AZ-900, SC-900).
+            </p>
+
+            <div class="stats">
+              <div class="stat-card">
+                <div class="stat-number" data-target="3" data-suffix="+">0</div>
+                <div class="stat-label">Lab Projects</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-target="5" data-suffix="">0</div>
+                <div class="stat-label">Certifications</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-target="4" data-suffix="%">0</div>
+                <div class="stat-label">Top NCL Rank</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-target="2" data-suffix=" yrs">0</div>
+                <div class="stat-label">Industry XP</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="terminal-bar">
+              <span class="dot dot-r"></span>
+              <span class="dot dot-y"></span>
+              <span class="dot dot-g"></span>
+              <span class="terminal-title">vignesh@rowan ~ </span>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+              <div class="term-line"><span class="term-prompt">$</span> whoami</div>
+              <div class="term-line term-out" data-term="naga_vignesh_marneni"></div>
+              <div class="term-line"><span class="term-prompt">$</span> cat profile.json</div>
+              <div class="term-line term-out" data-term='{ "role": "Network Security Engineer" }'></div>
+              <div class="term-line term-out" data-term='{ "location": "Glassboro, NJ" }'></div>
+              <div class="term-line term-out" data-term='{ "edu": "M.S. CS @ Rowan University" }'></div>
+              <div class="term-line term-out" data-term='{ "focus": ["pentest", "SOC", "networking"] }'></div>
+              <div class="term-line"><span class="term-prompt">$</span> uptime</div>
+              <div class="term-line term-out" data-term="status: ready &mdash; available for hire"></div>
+              <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">_</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= SKILLS ============= -->
+    <section class="section section-alt" id="skills">
+      <div class="binhex-bg" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="eyebrow">// 02 — Skills</span>
+          <h2 class="section-title">Technical arsenal</h2>
+          <p class="section-sub">Calibrated across four operational domains.</p>
+        </header>
+
+        <div class="skills-grid">
+          <article class="skill-group glass" data-aos="fade-up">
+            <div class="skill-group-head">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+              <h3>Network Security</h3>
+            </div>
+            <ul class="skill-pills">
+              <li class="pill" data-progress="90">OSPF / VLANs / ACLs <span class="ring" data-ring="90"></span></li>
+              <li class="pill" data-progress="88">Cisco IOS <span class="ring" data-ring="88"></span></li>
+              <li class="pill" data-progress="80">SD-WAN <span class="ring" data-ring="80"></span></li>
+              <li class="pill" data-progress="85">Firewall &amp; ACL Design <span class="ring" data-ring="85"></span></li>
+              <li class="pill" data-progress="82">Structured Cabling <span class="ring" data-ring="82"></span></li>
+            </ul>
+          </article>
+
+          <article class="skill-group glass" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-group-head">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+              <h3>Penetration Testing</h3>
+            </div>
+            <ul class="skill-pills">
+              <li class="pill" data-progress="85">OWASP Top 10 <span class="ring" data-ring="85"></span></li>
+              <li class="pill" data-progress="80">Vulnerability Scanning <span class="ring" data-ring="80"></span></li>
+              <li class="pill" data-progress="78">Recon &amp; Enumeration <span class="ring" data-ring="78"></span></li>
+              <li class="pill" data-progress="75">Web Exploitation <span class="ring" data-ring="75"></span></li>
+              <li class="pill" data-progress="80">Incident Response <span class="ring" data-ring="80"></span></li>
+            </ul>
+          </article>
+
+          <article class="skill-group glass" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-group-head">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 20h8" stroke="currentColor" stroke-width="2"/></svg>
+              <h3>Tools &amp; Platforms</h3>
+            </div>
+            <ul class="skill-pills">
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wireshark/wireshark-original.svg" alt="" width="16" height="16" loading="lazy"/>Wireshark</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/splunk/splunk-original.svg" alt="" width="16" height="16" loading="lazy"/>Splunk</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" width="16" height="16" loading="lazy"/>Docker</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="" width="16" height="16" loading="lazy"/>Jenkins</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="" width="16" height="16" loading="lazy"/>AWS</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" width="16" height="16" loading="lazy"/>Linux</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" width="16" height="16" loading="lazy"/>Git</li>
+              <li class="pill">Nmap</li>
+              <li class="pill">Hydra</li>
+            </ul>
+          </article>
+
+          <article class="skill-group glass" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-group-head">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6L2 12l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <h3>Programming</h3>
+            </div>
+            <ul class="skill-pills">
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" width="16" height="16" loading="lazy"/>Python</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="" width="16" height="16" loading="lazy"/>Bash</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" width="16" height="16" loading="lazy"/>SQL</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" width="16" height="16" loading="lazy"/>HTML5</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" width="16" height="16" loading="lazy"/>CSS3</li>
+              <li class="pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="" width="16" height="16" loading="lazy"/>Bootstrap</li>
+              <li class="pill">REST APIs</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= PROJECTS ============= -->
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="eyebrow">// 03 — Projects</span>
+          <h2 class="section-title">Field deployments</h2>
+          <p class="section-sub">Three projects spanning DevOps, offensive security, and enterprise networking.</p>
+        </header>
+
+        <div class="projects-grid">
+          <article class="project-card glass tilt" data-aos="fade-up">
+            <div class="project-num">01</div>
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M3 8l9-5 9 5-9 5-9-5zm0 8l9 5 9-5M3 12l9 5 9-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="project-title">Dockerized Web App with CI/CD</h3>
+            <p class="project-desc">
+              End-to-end deployment pipeline using Docker, Jenkins, and AWS. Containerized
+              builds eliminated environment drift; Jenkins handled automated test &amp; ship.
+            </p>
+            <div class="tech-tags">
+              <span>Docker</span><span>Jenkins</span><span>AWS</span><span>CI/CD</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link" data-magnetic>
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card glass tilt" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-num">02</div>
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="project-title">Mission Pumpkin — Vulnerable Web App</h3>
+            <p class="project-desc">
+              A deliberately vulnerable web app modeled on the OWASP Top 10. Recon and
+              exploitation with Nmap and Hydra; mapped attack chains and remediations.
+            </p>
+            <div class="tech-tags">
+              <span>OWASP</span><span>Nmap</span><span>Hydra</span><span>Pen Testing</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link" data-magnetic>
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card glass tilt" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-num">03</div>
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><circle cx="6" cy="6" r="2" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="18" cy="6" r="2" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="18" r="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 8v4h12V8M12 12v4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="project-title">Multi-City Enterprise Network</h3>
+            <p class="project-desc">
+              Scalable network linking Glassboro, Gloucester, and Atlantic City over Frame
+              Relay. DHCP/DNS for 100+ devices with centralized HTTP and FTP services.
+            </p>
+            <div class="tech-tags">
+              <span>Cisco</span><span>OSPF</span><span>Frame Relay</span><span>DHCP/DNS</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link" data-magnetic>
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= CERTIFICATIONS / TIMELINE ============= -->
+    <section class="section section-alt" id="certifications">
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="eyebrow">// 04 — Certifications</span>
+          <h2 class="section-title">Credential timeline</h2>
+          <p class="section-sub">Industry-recognized certifications with verifiable credentials.</p>
+        </header>
+
+        <div class="timeline" id="timeline">
+          <div class="timeline-line" id="timelineLine"></div>
+
+          <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <div class="timeline-head">
+                <span class="timeline-issuer">CompTIA</span>
+                <span class="timeline-date">2025</span>
+              </div>
+              <h3>CompTIA Network+</h3>
+              <p>Networking fundamentals, infrastructure, operations, security, and troubleshooting.</p>
+              <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/662nhlyb_CompTIA%20Network%2B%20ce%20certificate.pdf" target="_blank" rel="noopener" class="timeline-cta">View credential →</a>
+            </div>
+          </div>
+
+          <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <div class="timeline-head">
+                <span class="timeline-issuer">CompTIA</span>
+                <span class="timeline-date">2025</span>
+              </div>
+              <h3>CompTIA Security+</h3>
+              <p>Cybersecurity best practices, risk management, incident response, and threat analysis.</p>
+              <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/17dy4510_CompTIA%20Security%2B%20ce%20certificate.pdf" target="_blank" rel="noopener" class="timeline-cta">View credential →</a>
+            </div>
+          </div>
+
+          <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <div class="timeline-head">
+                <span class="timeline-issuer">Cisco</span>
+                <span class="timeline-date">2024</span>
+              </div>
+              <h3>Cisco CCNA</h3>
+              <p>IP connectivity, security fundamentals, automation, and network access.</p>
+              <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/cve0govt_Cisco%20Certified%20Network%20Associate%20certificate.pdf" target="_blank" rel="noopener" class="timeline-cta">View credential →</a>
+            </div>
+          </div>
+
+          <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <div class="timeline-head">
+                <span class="timeline-issuer">Microsoft</span>
+                <span class="timeline-date">2024</span>
+              </div>
+              <h3>Microsoft Azure AZ-900</h3>
+              <p>Azure cloud concepts, services, workloads, security, and pricing.</p>
+              <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/jjuh5c9a_AZ900.pdf" target="_blank" rel="noopener" class="timeline-cta">View credential →</a>
+            </div>
+          </div>
+
+          <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <div class="timeline-head">
+                <span class="timeline-issuer">Microsoft</span>
+                <span class="timeline-date">2024</span>
+              </div>
+              <h3>Microsoft SC-900</h3>
+              <p>Security, compliance, and identity fundamentals across Microsoft cloud.</p>
+              <span class="timeline-cta muted">Credential on request</span>
+            </div>
+          </div>
+
+          <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-dot dot-success"></div>
+            <div class="timeline-card glass timeline-trophy">
+              <div class="timeline-head">
+                <span class="timeline-issuer success">National Cyber League</span>
+                <span class="timeline-date">Spring 2025</span>
+              </div>
+              <h3>Diamond 2 — Top 4% Nationally</h3>
+              <p>Crypto, network forensics, OSINT, password cracking, web exploitation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= CONTACT ============= -->
+    <section class="section" id="contact">
+      <div class="contact-grid-bg" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-header" data-aos="fade-up">
+          <span class="eyebrow">// 05 — Contact</span>
+          <h2 class="section-title">Open a secure channel</h2>
+          <p class="section-sub">Available for internships, full-time, and consulting in network security.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info" data-aos="fade-right">
+            <a href="mailto:marnen88@rowan.edu" class="contact-card glass" data-magnetic>
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+              </div>
+              <div>
+                <span class="contact-label">Email</span>
+                <span class="contact-value">marnen88@rowan.edu</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="contact-card glass" data-magnetic>
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
+              </div>
+              <div>
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">@Naga-Vignesh</span>
+              </div>
+            </a>
+
+            <a href="tel:+18565264281" class="contact-card glass" data-magnetic>
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.34 1.9.63 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.29 1.85.5 2.81.63A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+              </div>
+              <div>
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+1 (856) 526-4281</span>
+              </div>
+            </a>
+
+            <div class="contact-card glass">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+              </div>
+              <div>
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Glassboro, New Jersey</span>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form glass" data-aos="fade-left" id="contactForm" action="https://formspree.io/f/your_form_id" method="POST" novalidate>
+            <div class="form-row">
+              <label class="form-field">
+                <span>Name</span>
+                <input type="text" name="name" required autocomplete="name" />
+              </label>
+              <label class="form-field">
+                <span>Email</span>
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+            </div>
+            <label class="form-field">
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary btn-block" data-magnetic>
+              <span>Send Encrypted</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============= FOOTER ============= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        <span class="footer-mono">// © 2025 Naga Vignesh — built with care</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon" data-magnetic>
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:marnen88@rowan.edu" aria-label="Email" class="social-icon" data-magnetic>
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============= AI CHATBOT WIDGET ============= -->
+  <button class="chat-fab" id="chatFab" aria-label="Open chat assistant">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/>
+      <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="chat-fab-pulse" aria-hidden="true"></span>
+  </button>
+
+  <section class="chat-panel" id="chatPanel" aria-hidden="true" aria-label="Chat with Vignesh's assistant">
+    <header class="chat-header">
+      <div class="chat-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="chat-title">
+        <strong>Ask about Vignesh</strong>
+        <span class="chat-status"><span class="chat-dot-online"></span>Online</span>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg ai">
+        Hi! I'm Vignesh's portfolio assistant. Ask me about his skills, projects, or how to reach him.
+      </div>
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button class="suggest" data-q="What are your skills?">What are your skills?</button>
+        <button class="suggest" data-q="Tell me about your projects.">Tell me about your projects</button>
+        <button class="suggest" data-q="Are you available for hire?">Are you available for hire?</button>
+      </div>
+    </div>
+
+    <form class="chat-input" id="chatForm" autocomplete="off">
+      <input type="text" id="chatInput" placeholder="Type a message…" aria-label="Message" required />
+      <button type="submit" aria-label="Send">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <!-- ============= LIBS (CDN) ============= -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/2.12.0/tsparticles.bundle.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+  <!-- ============= APP ============= -->
+  <script src="js/particles-config.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
