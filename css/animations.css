@@ -1,82 +1,53 @@
 /* ===========================================================
-   animations.css — keyframes and reveal helpers
+   animations.css — CSS-only scroll reveals via .reveal class
+   JS adds .in-view when element enters viewport.
+   Content is ALWAYS visible — animation only enhances.
    =========================================================== */
 
-/* AOS overrides */
-[data-aos] { will-change: transform, opacity; }
-
-/* Fade slide for sections (added by GSAP fallback / IntersectionObserver) */
-.fade-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 700ms cubic-bezier(.2, .8, .2, 1), transform 700ms cubic-bezier(.2, .8, .2, 1);
+/* Reveal: elements start slightly offset, animate in when visible */
+.reveal {
+  opacity: 0.0;
+  transform: translateY(24px);
+  transition: opacity 600ms cubic-bezier(.2,.6,.3,1), transform 600ms cubic-bezier(.2,.6,.3,1);
 }
-.fade-up.in-view {
+.reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Magnetic button transitions (snap-back when not hovered) */
-[data-magnetic] {
-  transition: transform 320ms cubic-bezier(.2, .8, .2, 1);
+/* SAFETY NET: if JS fails, everything is still visible */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
-/* Tilt is set via inline transform; this just preps the will-change */
-.tilt { will-change: transform; transform-style: preserve-3d; }
-.tilt > * { transform: translateZ(0); }
-.tilt .project-icon,
-.tilt .project-title,
-.tilt .project-desc,
-.tilt .tech-tags,
-.tilt .project-actions {
-  transform: translateZ(20px);
+/* Also use noscript-friendly fallback via timeout —
+   if .in-view is never added within 3s, show anyway */
+@keyframes forceVisible {
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  animation: forceVisible 0.001ms 3s forwards;
+}
+.reveal.in-view {
+  animation: none;
 }
 
-/* Sweeping reveal for headings */
-@keyframes sweepUnderline {
-  from { width: 0; }
-  to { width: 80px; }
+/* Typed.js cursor styling */
+.typed-cursor {
+  font-weight: 400;
+  color: var(--cyan);
+  animation: blink 1s steps(2) infinite;
 }
 
-/* Stat counter shimmer */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* tsParticles wrapper covers hero only */
-#tsparticles canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* AOS fade-up custom timing tune */
-[data-aos="fade-up"] {
-  transition-timing-function: cubic-bezier(.2, .8, .2, 1) !important;
-}
-
-/* Floating animation for hero visual */
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.hex-frame { animation: floaty 6s ease-in-out infinite; }
-
-/* Section-title underline triggered when section is in view */
-.section-header.in-view .section-title::after {
-  animation: sweepUnderline 800ms cubic-bezier(.2, .8, .2, 1) forwards;
-}
-
-/* Glow pulse for CTAs */
-@keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 6px 24px rgba(0, 212, 255, 0.22); }
-  50% { box-shadow: 0 8px 36px rgba(0, 212, 255, 0.40); }
-}
-.btn-primary { animation: ctaPulse 4s ease-in-out infinite; }
-
-/* Reduced-motion guard */
+/* Reduced motion: disable all reveal transitions */
 @media (prefers-reduced-motion: reduce) {
-  .hex-frame { animation: none; }
-  .btn-primary { animation: none; }
-  .fade-up { opacity: 1; transform: none; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
