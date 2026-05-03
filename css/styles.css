@@ -750,55 +750,127 @@ h1, h2, h3, h4 {
 .certs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 22px;
 }
 .cert-card {
   display: flex; flex-direction: column;
+  align-items: center;
+  text-align: center;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 26px 22px;
-  transition: transform 200ms, border-color 250ms, box-shadow 250ms;
+  padding: 28px 24px;
+  transition: transform 250ms ease, border-color 250ms, box-shadow 250ms, background 250ms;
 }
-a.cert-card:hover {
-  transform: translateY(-4px);
+a.cert-card:hover,
+.cert-card:hover {
+  transform: translateY(-6px);
   border-color: var(--border-hover);
   box-shadow: var(--glow-cyan);
+}
+
+/* ── Badge image ── */
+.cert-badge-wrap {
+  width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  perspective: 600px;
+}
+.cert-badge {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.2));
+  transition: transform 350ms ease, filter 350ms ease;
+}
+.cert-card:hover .cert-badge {
+  transform: scale(1.1) rotate(3deg);
+  filter: drop-shadow(0 0 28px rgba(0, 212, 255, 0.55));
+}
+
+/* ── Names + issuer ── */
+.cert-card .cert-name {
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  color: var(--text-primary);
 }
 .cert-issuer {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px; letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent-cyan);
-  margin-bottom: 10px;
+  margin-bottom: 18px;
 }
-.cert-card h3 { font-size: 22px; margin-bottom: 6px; }
-.cert-card p { color: rgba(240, 242, 248, 0.55); font-size: 13.5px; line-height: 1.6; margin-bottom: 12px; }
+
+/* ── Footer (year + verify) ── */
+.cert-footer {
+  margin-top: auto;
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
 .cert-year {
-  display: block;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px; color: var(--text-muted);
-  margin-bottom: 12px;
 }
 .cert-verify {
-  margin-top: auto;
   font-size: 13px; color: var(--accent-cyan);
   font-family: 'JetBrains Mono', monospace;
   transition: opacity 200ms;
 }
 .cert-verify.muted { color: var(--text-muted); }
-a.cert-card:hover .cert-verify { opacity: 0.7; }
+a.cert-card:hover .cert-verify { opacity: 0.85; }
 
-/* Achievement card */
+/* ── Achievement (NCL Diamond-2) ── */
 .cert-achievement {
-  border-color: rgba(0, 255, 136, 0.2);
+  border-color: rgba(0, 255, 136, 0.22);
   background:
-    radial-gradient(ellipse at 80% 20%, rgba(0, 255, 136, 0.06), transparent),
-    var(--bg-card);
+    radial-gradient(ellipse at 80% 20%, rgba(0, 255, 136, 0.05), transparent),
+    rgba(0, 255, 136, 0.03);
+}
+.cert-achievement:hover {
+  border-color: rgba(0, 255, 136, 0.4) !important;
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.12) !important;
+}
+.cert-diamond-wrap {
+  width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.cert-diamond {
+  font-size: 84px; line-height: 1;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+  animation: diamondGlow 3.2s ease-in-out infinite;
+}
+@keyframes diamondGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 16px rgba(0, 212, 255, 0.35));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 28px rgba(123, 47, 255, 0.6));
+    transform: scale(1.05);
+  }
+}
+.cert-name-gradient {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .achievement-issuer { color: var(--accent-green) !important; }
-.cert-achievement h3 { color: var(--accent-green); }
-.cert-achievement:hover { border-color: rgba(0, 255, 136, 0.4) !important; }
+.cert-achievement-sub {
+  color: rgba(240, 242, 248, 0.65);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
 
 /* ============================================================
    CONTACT

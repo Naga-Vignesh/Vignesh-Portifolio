@@ -91,48 +91,73 @@
   }
 
   /* ── Stat counters (count-up on scroll) ── */
-  const statNums = $$('.stat-num');
-  if (statNums.length) {
-    const statIO = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el     = entry.target;
-        const target = parseInt(el.dataset.target, 10) || 0;
-        const suffix = el.dataset.suffix || '';
-        const dur    = 1400;
-        const start  = performance.now();
+  function initCounters() {
+    const counters = document.querySelectorAll('.stat-num');
+    if (!counters.length) return;
 
-        function tick(now) {
-          const t     = Math.min(1, (now - start) / dur);
-          const eased = 1 - Math.pow(1 - t, 3);
-          el.textContent = Math.round(target * eased) + suffix;
-          if (t < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-        statIO.unobserve(el);
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || entry.target.dataset.counted) return;
+        entry.target.dataset.counted = 'true';
+
+        const el       = entry.target;
+        const target   = +el.dataset.target;
+        const suffix   = el.dataset.suffix || '';
+        const duration = 2000;
+        const step     = target / (duration / 16);
+        let   current  = 0;
+
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = Math.floor(current) + suffix;
+        }, 16);
+
+        counterObs.unobserve(el);
       });
-    }, { threshold: 0.5 });
-    statNums.forEach(el => statIO.observe(el));
+    }, { threshold: 0.1 });
+
+    counters.forEach(c => counterObs.observe(c));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
   }
 
   /* ── Terminal typewriter ── */
-  const termBody = $('#terminalBody');
-  if (termBody) {
+  function initTerminal() {
+    const termBody = document.getElementById('terminalBody');
+    if (!termBody) return;
+
     const outLines = termBody.querySelectorAll('[data-term]');
     let started = false;
 
     const termIO = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting || started) return;
-      started = true;
-      termIO.disconnect();
-      let delay = 400;
-      outLines.forEach(line => {
-        const text = line.dataset.term || '';
-        setTimeout(() => typeOut(line, text, 22), delay);
-        delay += text.length * 22 + 280;
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || started) return;
+        started = true;
+        termIO.disconnect();
+        let delay = 400;
+        outLines.forEach(line => {
+          const text = line.dataset.term || '';
+          setTimeout(() => typeOut(line, text, 22), delay);
+          delay += text.length * 22 + 400; /* 400ms pause between command output */
+        });
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
+
     termIO.observe(termBody);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTerminal);
+  } else {
+    initTerminal();
   }
 
   function typeOut(node, text, speed) {

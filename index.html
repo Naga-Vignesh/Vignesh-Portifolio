@@ -137,19 +137,19 @@
 
         <div class="stats-grid reveal" style="--reveal-delay: 0.3s">
           <div class="stat">
-            <span class="stat-num" data-target="2" data-suffix="+">0</span>
+            <span class="stat-num counter" data-target="2">0</span>
             <span class="stat-label">Years Experience</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-target="4" data-suffix="">0</span>
+            <span class="stat-num counter" data-target="4">0</span>
             <span class="stat-label">Projects</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-target="5" data-suffix="">0</span>
+            <span class="stat-num counter" data-target="5">0</span>
             <span class="stat-label">Certifications</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-target="4" data-suffix="%">0</span>
+            <span class="stat-num counter" data-target="4" data-suffix="%">0</span>
             <span class="stat-label">Top NCL Nationally</span>
           </div>
         </div>
@@ -195,33 +195,8 @@
     <div class="timeline">
       <div class="timeline-track" aria-hidden="true"></div>
 
-      <!-- Item 1: DCC Communities — CURRENT -->
+      <!-- Hathway Cable & Datacom Ltd -->
       <div class="timeline-item reveal">
-        <div class="timeline-dot" aria-hidden="true"></div>
-        <div class="timeline-card">
-          <div class="timeline-meta">
-            <span class="timeline-date">Aug 2024 – Present</span>
-            <span class="badge-current">CURRENT</span>
-          </div>
-          <h3 class="timeline-role">NW Deployment Technician IV</h3>
-          <p class="timeline-company">DCC Communities</p>
-          <ul class="timeline-bullets">
-            <li>Coordinate network hardware deployments and capacity scaling initiatives across multiple facilities, managing rack space, cabling, and power allocation from planning through cutover.</li>
-            <li>Perform Layer 1/2 diagnostics on infrastructure issues, resolving physical and logical connectivity faults within SLA parameters to minimize service disruption.</li>
-            <li>Execute hardware migration and provisioning workflows for new room buildouts, collaborating with facilities teams on environmental and power requirements.</li>
-            <li>Maintain service reliability in critical environments through systematic troubleshooting and proactive monitoring of network devices and Linux-based systems.</li>
-          </ul>
-          <div class="timeline-tags">
-            <span>Network Deployment</span>
-            <span>Infrastructure</span>
-            <span>Capacity Management</span>
-            <span>Layer 1/2</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 2: Hathway -->
-      <div class="timeline-item reveal" style="--reveal-delay: 0.15s">
         <div class="timeline-dot" aria-hidden="true"></div>
         <div class="timeline-card">
           <div class="timeline-meta">
@@ -230,11 +205,11 @@
           <h3 class="timeline-role">Network Support Engineer</h3>
           <p class="timeline-company">Hathway Cable &amp; Datacom Ltd</p>
           <ul class="timeline-bullets">
-            <li>Supported ISP network capacity scaling initiatives, coordinating provisioning, rack space allocation, and hardware migration for new network hardware across multiple sites.</li>
-            <li>Executed Layer 1/2 NOC diagnostics on provisioning-related failures, identifying and resolving physical and logical connectivity issues in rack/patch panel and console network setups within SLA parameters.</li>
-            <li>Conducted systematic troubleshooting of network hardware and Linux-based servers, correcting device state inconsistencies and minimizing MTTR during shift-based and on-call incident escalations.</li>
-            <li>Configured ACLs and validated router-aggregate deployments during new room buildouts, coordinating rack space, power, and cooling allocation with facilities teams.</li>
-            <li>Maintained 99.5% network availability in 24/7 operations — reducing average ticket-to-resolution cycle time by 15% through disciplined prioritization.</li>
+            <li>Supported ISP network capacity scaling initiatives, coordinating provisioning, rack space allocation, and hardware migration for new network hardware across multiple sites to address subscriber growth.</li>
+            <li>Executed Layer 1/2 NOC diagnostics on provisioning-related failures, identifying and resolving physical and logical connectivity issues within SLA parameters.</li>
+            <li>Conducted systematic troubleshooting of network hardware and Linux-based servers, correcting device state inconsistencies and minimizing MTTR during on-call escalations.</li>
+            <li>Configured ACLs and validated router-aggregate deployments during new room buildouts, coordinating rack space, power and cooling allocation with facilities teams.</li>
+            <li>Maintained 99.5% network availability in 24/7 operations — reducing average ticket-to-resolution time by 15%.</li>
           </ul>
           <div class="timeline-tags">
             <span>NOC</span>
@@ -422,57 +397,97 @@
 
     <div class="certs-grid">
 
+      <!-- CCNA -->
       <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/cve0govt_Cisco%20Certified%20Network%20Associate%20certificate.pdf"
-         target="_blank" rel="noopener" class="cert-card reveal">
+         target="_blank" rel="noopener" class="cert-card cert-badge-card reveal">
+        <div class="cert-badge-wrap">
+          <img class="cert-badge"
+               src="https://images.credly.com/size/340x340/images/a31c0301-ff96-4cee-9435-0a4b40ce6e66/cisco-ccna.png"
+               alt="Cisco Certified Network Associate badge" loading="lazy" />
+        </div>
+        <h3 class="cert-name">CCNA</h3>
         <span class="cert-issuer">Cisco</span>
-        <h3>CCNA</h3>
-        <p>Cisco Certified Network Associate</p>
-        <span class="cert-year">2024</span>
-        <span class="cert-verify">Verify →</span>
+        <div class="cert-footer">
+          <span class="cert-year">2024</span>
+          <span class="cert-verify">Verify →</span>
+        </div>
       </a>
 
+      <!-- Network+ -->
       <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/662nhlyb_CompTIA%20Network%2B%20ce%20certificate.pdf"
-         target="_blank" rel="noopener" class="cert-card reveal" style="--reveal-delay: 0.08s">
-        <span class="cert-issuer">CompTIA</span>
-        <h3>Network+</h3>
-        <p>CompTIA Network+ N10-009</p>
-        <span class="cert-year">2025</span>
-        <span class="cert-verify">Verify →</span>
+         target="_blank" rel="noopener" class="cert-card cert-badge-card reveal" style="--reveal-delay: 0.08s">
+        <div class="cert-badge-wrap">
+          <img class="cert-badge"
+               src="https://images.credly.com/size/340x340/images/e1fc05b2-959b-45a4-8d20-124b1df121fe/CompTIA_Network_2Bce.png"
+               alt="CompTIA Network+ badge" loading="lazy" />
+        </div>
+        <h3 class="cert-name">Network+</h3>
+        <span class="cert-issuer">CompTIA · N10-009</span>
+        <div class="cert-footer">
+          <span class="cert-year">2025</span>
+          <span class="cert-verify">Verify →</span>
+        </div>
       </a>
 
+      <!-- Security+ -->
       <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/17dy4510_CompTIA%20Security%2B%20ce%20certificate.pdf"
-         target="_blank" rel="noopener" class="cert-card reveal" style="--reveal-delay: 0.16s">
-        <span class="cert-issuer">CompTIA</span>
-        <h3>Security+</h3>
-        <p>CompTIA Security+ SY0-701</p>
-        <span class="cert-year">2025</span>
-        <span class="cert-verify">Verify →</span>
+         target="_blank" rel="noopener" class="cert-card cert-badge-card reveal" style="--reveal-delay: 0.16s">
+        <div class="cert-badge-wrap">
+          <img class="cert-badge"
+               src="https://images.credly.com/size/340x340/images/74790a75-8451-400a-8536-92d792c5184a/CompTIA_Security_2Bce.png"
+               alt="CompTIA Security+ badge" loading="lazy" />
+        </div>
+        <h3 class="cert-name">Security+</h3>
+        <span class="cert-issuer">CompTIA · SY0-701</span>
+        <div class="cert-footer">
+          <span class="cert-year">2025</span>
+          <span class="cert-verify">Verify →</span>
+        </div>
       </a>
 
-      <div class="cert-card reveal" style="--reveal-delay: 0.08s">
-        <span class="cert-issuer">Microsoft</span>
-        <h3>SC-900</h3>
-        <p>Microsoft Security SC-900</p>
-        <span class="cert-year">2024</span>
-        <span class="cert-verify muted">On request</span>
+      <!-- SC-900 -->
+      <div class="cert-card cert-badge-card reveal" style="--reveal-delay: 0.08s">
+        <div class="cert-badge-wrap">
+          <img class="cert-badge"
+               src="https://images.credly.com/size/340x340/images/fc1352af-87fa-4947-ba54-398a0e63322e/security-compliance-and-identity-fundamentals-600x600.png"
+               alt="Microsoft SC-900 badge" loading="lazy" />
+        </div>
+        <h3 class="cert-name">SC-900</h3>
+        <span class="cert-issuer">Microsoft Security</span>
+        <div class="cert-footer">
+          <span class="cert-year">2024</span>
+          <span class="cert-verify muted">On request</span>
+        </div>
       </div>
 
+      <!-- AZ-900 -->
       <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/jjuh5c9a_AZ900.pdf"
-         target="_blank" rel="noopener" class="cert-card reveal" style="--reveal-delay: 0.16s">
-        <span class="cert-issuer">Microsoft</span>
-        <h3>AZ-900</h3>
-        <p>Microsoft Azure AZ-900</p>
-        <span class="cert-year">2024</span>
-        <span class="cert-verify">Verify →</span>
+         target="_blank" rel="noopener" class="cert-card cert-badge-card reveal" style="--reveal-delay: 0.16s">
+        <div class="cert-badge-wrap">
+          <img class="cert-badge"
+               src="https://images.credly.com/size/340x340/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png"
+               alt="Microsoft Azure AZ-900 badge" loading="lazy" />
+        </div>
+        <h3 class="cert-name">AZ-900</h3>
+        <span class="cert-issuer">Microsoft Azure</span>
+        <div class="cert-footer">
+          <span class="cert-year">2024</span>
+          <span class="cert-verify">Verify →</span>
+        </div>
       </a>
 
-      <!-- NCL Achievement -->
+      <!-- NCL Diamond-2 Achievement -->
       <div class="cert-card cert-achievement reveal" style="--reveal-delay: 0.24s">
+        <div class="cert-diamond-wrap">
+          <span class="cert-diamond" aria-hidden="true">◆</span>
+        </div>
+        <h3 class="cert-name cert-name-gradient">Diamond-2 Medal</h3>
         <span class="cert-issuer achievement-issuer">NCL Spring 2025</span>
-        <h3>Diamond-2 Medal</h3>
-        <p>Top 4% nationally — 316 of 8,575 participants. Cybersecurity &amp; network analysis challenges.</p>
-        <span class="cert-year">2025</span>
-        <span class="cert-verify muted">National Cyber League</span>
+        <p class="cert-achievement-sub">Top 4% nationally — 316 of 8,575</p>
+        <div class="cert-footer">
+          <span class="cert-year">2025</span>
+          <span class="cert-verify muted">National Cyber League</span>
+        </div>
       </div>
 
     </div>
