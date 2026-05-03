@@ -1,32 +1,37 @@
-/* ===========================================================
-   animations.js — Typed.js init only
-   All scroll animations are CSS + IntersectionObserver in main.js
-   =========================================================== */
+/* ============================================================
+   animations.js — Typed.js init.
+   All scroll reveals are handled by IntersectionObserver in main.js.
+   ============================================================ */
 
 (() => {
   'use strict';
 
-  const init = () => {
-    if (window.Typed && document.getElementById('typed')) {
-      new Typed('#typed', {
-        strings: [
-          'Network Security Engineer',
-          'Ethical Hacker',
-          'SOC Analyst',
-          'Penetration Tester',
-          'Network Administrator',
-        ],
-        typeSpeed: 50,
-        backSpeed: 28,
-        backDelay: 1800,
-        startDelay: 500,
-        loop: true,
-        smartBackspace: true,
-        cursorChar: '|',
-      });
-    }
-  };
+  function init() {
+    if (!window.Typed || !document.getElementById('typed')) return;
 
-  if (document.readyState === 'complete') init();
-  else window.addEventListener('load', init);
+    new Typed('#typed', {
+      strings: [
+        'Network Security Engineer',
+        'NOC Operations Specialist',
+        'Infrastructure Engineer',
+        'Ethical Hacker',
+        'Penetration Tester',
+        'SOC Analyst',
+      ],
+      typeSpeed:   52,
+      backSpeed:   28,
+      backDelay:  1800,
+      startDelay:  600,
+      loop:        true,
+      smartBackspace: true,
+      cursorChar:  '|',
+    });
+  }
+
+  /* Wait for all deferred scripts (Three.js etc.) to load first */
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    window.addEventListener('load', init);
+  }
 })();

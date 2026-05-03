@@ -3,440 +3,605 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Naga Vignesh Marneni — Cybersecurity, Network Security, and Penetration Testing portfolio." />
-  <meta name="theme-color" content="#0a0a0f" />
-  <title>Naga Vignesh — Cybersecurity & Networking</title>
+  <meta name="description" content="Naga Vignesh Marneni — Infrastructure & Cybersecurity Professional. NOC Operations, Network Security, AWS." />
+  <meta name="theme-color" content="#050508" />
+  <title>Naga Vignesh Marneni — Infrastructure & Cybersecurity</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
+  <!-- Devicons -->
+  <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/chatbot.css" />
+
+  <!-- No-JS safety: reveal elements are always visible if JS is off -->
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
-  <!-- ============= NAVBAR ============= -->
-  <header class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#home" class="logo" aria-label="Home">
-        <span class="logo-text">NV</span>
+
+<!-- ─────────────────────────────────────────────
+     THREE.JS CANVAS — fixed, behind everything
+───────────────────────────────────────────── -->
+<canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+<!-- ─────────────────────────────────────────────
+     NAVBAR
+───────────────────────────────────────────── -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" aria-label="Home">
+      <div class="logo-hex"><span>NV</span></div>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#home"          class="nav-link active">Home</a>
+      <a href="#about"         class="nav-link">About</a>
+      <a href="#experience"    class="nav-link">Experience</a>
+      <a href="#skills"        class="nav-link">Skills</a>
+      <a href="#projects"      class="nav-link">Projects</a>
+      <a href="#certifications" class="nav-link">Certs</a>
+      <a href="#contact"       class="nav-link">Contact</a>
+    </nav>
+
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile fullscreen overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" width="28" height="28"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <nav class="mobile-nav-links" aria-label="Mobile">
+    <a href="#home"          class="mobile-nav-link">Home</a>
+    <a href="#about"         class="mobile-nav-link">About</a>
+    <a href="#experience"    class="mobile-nav-link">Experience</a>
+    <a href="#skills"        class="mobile-nav-link">Skills</a>
+    <a href="#projects"      class="mobile-nav-link">Projects</a>
+    <a href="#certifications" class="mobile-nav-link">Certs</a>
+    <a href="#contact"       class="mobile-nav-link">Contact</a>
+  </nav>
+</div>
+
+<!-- Matrix easter egg canvas -->
+<canvas id="matrixCanvas" class="matrix-canvas" aria-hidden="true"></canvas>
+
+<main>
+<!-- ─────────────────────────────────────────────
+     HERO
+───────────────────────────────────────────── -->
+<section id="home" class="hero-section" aria-label="Hero">
+  <div class="hero-overlay">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-label">
+          <span class="status-square">■</span>&nbsp;SYSTEM ONLINE
+        </p>
+        <h1 class="hero-name">NAGA<br>VIGNESH</h1>
+        <div class="hero-typed-wrap">
+          <span id="typed" class="hero-typed"></span>
+        </div>
+        <p class="hero-bio">
+          Infrastructure-focused IT professional with 2+ years in
+          network operations, NOC diagnostics &amp; cybersecurity.
+        </p>
+        <div class="hero-actions">
+          <a href="#about" class="btn btn-outline">Explore My Work</a>
+          <a href="https://drive.google.com/file/d/1sEK-DGw2i6rEwUbTXDGWu9tD7NX-kUgu/view?usp=sharing"
+             target="_blank" rel="noopener" class="btn btn-ghost">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">SCROLL</span>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     01 — ABOUT
+───────────────────────────────────────────── -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="section-num">01</span>
+      <span class="section-title-small">About</span>
+    </div>
+
+    <div class="about-grid">
+      <!-- Left: text + stats -->
+      <div class="about-left">
+        <h2 class="about-heading reveal">Building Secure<br>Digital Futures</h2>
+
+        <p class="about-bio reveal" style="--reveal-delay: 0.1s">
+          Infrastructure-focused IT professional with 2 years of production experience
+          supporting network operations, capacity scaling, and critical-environment service
+          reliability. Hands-on background in NOC operations, Layer&nbsp;1/2 network
+          diagnostics, hardware migration, and Linux system administration.
+        </p>
+        <p class="about-bio reveal" style="--reveal-delay: 0.2s">
+          Currently pursuing my M.S. in Computer Science at Rowan University, complementing
+          industry experience with certifications across networking, cloud, and security
+          domains. Actively seeking full-time roles in network infrastructure and
+          cybersecurity operations.
+        </p>
+
+        <div class="stats-grid reveal" style="--reveal-delay: 0.3s">
+          <div class="stat">
+            <span class="stat-num" data-target="2" data-suffix="+">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-target="4" data-suffix="">0</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-target="5" data-suffix="">0</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-target="4" data-suffix="%">0</span>
+            <span class="stat-label">Top NCL Nationally</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: terminal card -->
+      <div class="about-right reveal" style="--reveal-delay: 0.15s">
+        <div class="terminal-card">
+          <div class="terminal-bar">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="terminal-title">vignesh@naga-vignesh.me ~</span>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <div class="t-line"><span class="t-prompt">$</span>&nbsp;whoami</div>
+            <div class="t-line t-out" data-term="naga_vignesh_marneni"></div>
+            <div class="t-line"><span class="t-prompt">$</span>&nbsp;cat role.txt</div>
+            <div class="t-line t-out" data-term="NW Deployment Technician IV @ DCC Communities"></div>
+            <div class="t-line"><span class="t-prompt">$</span>&nbsp;cat certs.txt</div>
+            <div class="t-line t-out" data-term="CCNA | Network+ | Security+ | SC-900 | AZ-900"></div>
+            <div class="t-line"><span class="t-prompt">$</span>&nbsp;cat status.txt</div>
+            <div class="t-line t-out" data-term="[■ AVAILABLE FOR OPPORTUNITIES]"></div>
+            <div class="t-line"><span class="t-prompt">$</span>&nbsp;<span class="t-cursor">▌</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     02 — EXPERIENCE
+───────────────────────────────────────────── -->
+<section id="experience" class="section section-alt">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="section-num">02</span>
+      <span class="section-title-small">Experience</span>
+    </div>
+    <h2 class="section-heading reveal">Work History</h2>
+
+    <div class="timeline">
+      <div class="timeline-track" aria-hidden="true"></div>
+
+      <!-- Item 1: DCC Communities — CURRENT -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-date">Aug 2024 – Present</span>
+            <span class="badge-current">CURRENT</span>
+          </div>
+          <h3 class="timeline-role">NW Deployment Technician IV</h3>
+          <p class="timeline-company">DCC Communities</p>
+          <ul class="timeline-bullets">
+            <li>Coordinate network hardware deployments and capacity scaling initiatives across multiple facilities, managing rack space, cabling, and power allocation from planning through cutover.</li>
+            <li>Perform Layer 1/2 diagnostics on infrastructure issues, resolving physical and logical connectivity faults within SLA parameters to minimize service disruption.</li>
+            <li>Execute hardware migration and provisioning workflows for new room buildouts, collaborating with facilities teams on environmental and power requirements.</li>
+            <li>Maintain service reliability in critical environments through systematic troubleshooting and proactive monitoring of network devices and Linux-based systems.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>Network Deployment</span>
+            <span>Infrastructure</span>
+            <span>Capacity Management</span>
+            <span>Layer 1/2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Hathway -->
+      <div class="timeline-item reveal" style="--reveal-delay: 0.15s">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-date">Aug 2022 – May 2024</span>
+          </div>
+          <h3 class="timeline-role">Network Support Engineer</h3>
+          <p class="timeline-company">Hathway Cable &amp; Datacom Ltd</p>
+          <ul class="timeline-bullets">
+            <li>Supported ISP network capacity scaling initiatives, coordinating provisioning, rack space allocation, and hardware migration for new network hardware across multiple sites.</li>
+            <li>Executed Layer 1/2 NOC diagnostics on provisioning-related failures, identifying and resolving physical and logical connectivity issues in rack/patch panel and console network setups within SLA parameters.</li>
+            <li>Conducted systematic troubleshooting of network hardware and Linux-based servers, correcting device state inconsistencies and minimizing MTTR during shift-based and on-call incident escalations.</li>
+            <li>Configured ACLs and validated router-aggregate deployments during new room buildouts, coordinating rack space, power, and cooling allocation with facilities teams.</li>
+            <li>Maintained 99.5% network availability in 24/7 operations — reducing average ticket-to-resolution cycle time by 15% through disciplined prioritization.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>NOC</span>
+            <span>Layer 1/2</span>
+            <span>Linux</span>
+            <span>ACL</span>
+            <span>Cisco IOS</span>
+            <span>SLA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     03 — SKILLS
+───────────────────────────────────────────── -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="section-num">03</span>
+      <span class="section-title-small">Skills</span>
+    </div>
+    <h2 class="section-heading reveal">Technical Arsenal</h2>
+
+    <div class="skills-grid">
+
+      <!-- Hardware & Infrastructure -->
+      <div class="skill-cat reveal">
+        <h3 class="skill-cat-title">Hardware &amp; Infrastructure</h3>
+        <div class="skill-pills">
+          <span class="pill">Server Hardware Troubleshooting</span>
+          <span class="pill">Network Hardware Diagnostics</span>
+          <span class="pill">Physical Repair</span>
+          <span class="pill">Network Cabling</span>
+          <span class="pill">Layer 1/2 Networking</span>
+          <span class="pill">Rack / Patch Panel Config</span>
+          <span class="pill">Router-Aggregate Deployment</span>
+          <span class="pill">Capacity Scaling</span>
+          <span class="pill">Hardware Migration</span>
+          <span class="pill">Power &amp; Cooling</span>
+        </div>
+      </div>
+
+      <!-- Cloud & DevOps -->
+      <div class="skill-cat reveal" style="--reveal-delay: 0.1s">
+        <h3 class="skill-cat-title">Cloud &amp; DevOps</h3>
+        <div class="skill-pills">
+          <span class="pill"><i class="devicon-amazonwebservices-plain colored"></i>AWS (EC2, S3, IAM, Route 53)</span>
+          <span class="pill"><i class="devicon-docker-plain colored"></i>Docker</span>
+          <span class="pill"><i class="devicon-jenkins-plain colored"></i>Jenkins</span>
+          <span class="pill"><i class="devicon-git-plain colored"></i>Git</span>
+        </div>
+      </div>
+
+      <!-- Networking -->
+      <div class="skill-cat reveal" style="--reveal-delay: 0.15s">
+        <h3 class="skill-cat-title">Networking</h3>
+        <div class="skill-pills">
+          <span class="pill">TCP/IP</span>
+          <span class="pill">VLAN</span>
+          <span class="pill">OSPF</span>
+          <span class="pill">DHCP</span>
+          <span class="pill">DNS</span>
+          <span class="pill">ACL</span>
+          <span class="pill">SIP / RTP</span>
+          <span class="pill">NOC Operations</span>
+          <span class="pill">Wireshark</span>
+          <span class="pill">Network Scaling</span>
+          <span class="pill">Incident Escalation</span>
+          <span class="pill">Console Network Setup</span>
+        </div>
+      </div>
+
+      <!-- OS & Scripting -->
+      <div class="skill-cat reveal" style="--reveal-delay: 0.2s">
+        <h3 class="skill-cat-title">OS &amp; Scripting</h3>
+        <div class="skill-pills">
+          <span class="pill"><i class="devicon-linux-plain colored"></i>Linux / Unix</span>
+          <span class="pill">System Administration</span>
+          <span class="pill"><i class="devicon-python-plain colored"></i>Python</span>
+          <span class="pill"><i class="devicon-bash-plain colored"></i>Bash</span>
+          <span class="pill"><i class="devicon-mysql-plain colored"></i>SQL</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     04 — PROJECTS
+───────────────────────────────────────────── -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="section-num">04</span>
+      <span class="section-title-small">Projects</span>
+    </div>
+    <h2 class="section-heading reveal">What I've Built</h2>
+
+    <!-- Featured: Forensiq AI -->
+    <div class="project-featured reveal">
+      <div class="project-bg-num" aria-hidden="true">01</div>
+      <div class="project-featured-inner">
+        <div class="project-featured-content">
+          <div class="project-date">Feb 2026 – Mar 2026</div>
+          <h3 class="project-featured-title">Forensiq AI</h3>
+          <p class="project-featured-sub">Digital Forensic Intelligence Platform</p>
+          <p class="project-desc">
+            Full-stack forensic analysis platform using FastAPI, deployed on AWS via
+            Gunicorn and Nginx. Integrates VirusTotal threat intelligence API for malware
+            scanning and ML-based image analysis.
+          </p>
+          <div class="project-tags">
+            <span>FastAPI</span><span>AWS</span><span>Python</span>
+            <span>VirusTotal API</span><span>Nginx</span><span>ML</span>
+          </div>
+        </div>
+        <div class="project-featured-links">
+          <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="btn btn-outline">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid: 3 projects -->
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-bg-num sm" aria-hidden="true">02</div>
+        <div class="project-card-inner">
+          <div class="project-date">Oct 2025 – Jan 2026</div>
+          <h3>Cloud Infrastructure<br>Automation &amp; Compliance Scanner</h3>
+          <p>Infrastructure auditing tool using Python and Golang to identify misconfigured AWS and network resources. Automated compliance checks across IAM, S3, EC2, and network configs. Built Go-based CLI for rapid validation.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Golang</span><span>AWS</span>
+            <span>IAM</span><span>S3</span><span>CLI</span>
+          </div>
+          <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal" style="--reveal-delay: 0.1s">
+        <div class="project-bg-num sm" aria-hidden="true">03</div>
+        <div class="project-card-inner">
+          <div class="project-date">Nov 2024 – Dec 2024</div>
+          <h3>Scalable Multi-City<br>Enterprise Network</h3>
+          <p>Multi-site enterprise topology connecting three locations in spine-and-tree model. Implemented VLANs, STP, LACP, HSRP, OSPF, DHCP, DNS. Supported 200+ remote users. Hardened with Cisco IOS ACLs and firewall rules.</p>
+          <div class="project-tags">
+            <span>Cisco IOS</span><span>OSPF</span><span>VLAN</span>
+            <span>HSRP</span><span>LACP</span>
+          </div>
+          <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal" style="--reveal-delay: 0.2s">
+        <div class="project-bg-num sm" aria-hidden="true">04</div>
+        <div class="project-card-inner">
+          <div class="project-date">Sep 2023 – Dec 2023</div>
+          <h3>Dockerized Web App<br>CI/CD Pipeline</h3>
+          <p>CI/CD framework using AWS, Docker, and Jenkins. Reduced integration errors to fewer than one per month. Applied containerization to stabilize deployment workflows.</p>
+          <div class="project-tags">
+            <span>Docker</span><span>Jenkins</span><span>AWS</span><span>CI/CD</span>
+          </div>
+          <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     05 — CERTIFICATIONS
+───────────────────────────────────────────── -->
+<section id="certifications" class="section">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="section-num">05</span>
+      <span class="section-title-small">Certifications</span>
+    </div>
+    <h2 class="section-heading reveal">Credentials</h2>
+
+    <div class="certs-grid">
+
+      <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/cve0govt_Cisco%20Certified%20Network%20Associate%20certificate.pdf"
+         target="_blank" rel="noopener" class="cert-card reveal">
+        <span class="cert-issuer">Cisco</span>
+        <h3>CCNA</h3>
+        <p>Cisco Certified Network Associate</p>
+        <span class="cert-year">2024</span>
+        <span class="cert-verify">Verify →</span>
       </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Primary">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#certifications" class="nav-link">Certifications</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
+      <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/662nhlyb_CompTIA%20Network%2B%20ce%20certificate.pdf"
+         target="_blank" rel="noopener" class="cert-card reveal" style="--reveal-delay: 0.08s">
+        <span class="cert-issuer">CompTIA</span>
+        <h3>Network+</h3>
+        <p>CompTIA Network+ N10-009</p>
+        <span class="cert-year">2025</span>
+        <span class="cert-verify">Verify →</span>
+      </a>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/17dy4510_CompTIA%20Security%2B%20ce%20certificate.pdf"
+         target="_blank" rel="noopener" class="cert-card reveal" style="--reveal-delay: 0.16s">
+        <span class="cert-issuer">CompTIA</span>
+        <h3>Security+</h3>
+        <p>CompTIA Security+ SY0-701</p>
+        <span class="cert-year">2025</span>
+        <span class="cert-verify">Verify →</span>
+      </a>
+
+      <div class="cert-card reveal" style="--reveal-delay: 0.08s">
+        <span class="cert-issuer">Microsoft</span>
+        <h3>SC-900</h3>
+        <p>Microsoft Security SC-900</p>
+        <span class="cert-year">2024</span>
+        <span class="cert-verify muted">On request</span>
+      </div>
+
+      <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/jjuh5c9a_AZ900.pdf"
+         target="_blank" rel="noopener" class="cert-card reveal" style="--reveal-delay: 0.16s">
+        <span class="cert-issuer">Microsoft</span>
+        <h3>AZ-900</h3>
+        <p>Microsoft Azure AZ-900</p>
+        <span class="cert-year">2024</span>
+        <span class="cert-verify">Verify →</span>
+      </a>
+
+      <!-- NCL Achievement -->
+      <div class="cert-card cert-achievement reveal" style="--reveal-delay: 0.24s">
+        <span class="cert-issuer achievement-issuer">NCL Spring 2025</span>
+        <h3>Diamond-2 Medal</h3>
+        <p>Top 4% nationally — 316 of 8,575 participants. Cybersecurity &amp; network analysis challenges.</p>
+        <span class="cert-year">2025</span>
+        <span class="cert-verify muted">National Cyber League</span>
+      </div>
+
     </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     06 — CONTACT
+───────────────────────────────────────────── -->
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="section-num">06</span>
+      <span class="section-title-small">Contact</span>
+    </div>
+    <h2 class="section-heading reveal">Let's Connect</h2>
+
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="contact-info reveal">
+        <p class="contact-sub">Open to full-time roles, contracts &amp; collaborations.</p>
+        <a href="mailto:marnen88@rowan.edu" class="contact-email">marnen88@rowan.edu</a>
+        <a href="tel:+18565264281" class="contact-phone">+1 856-526-4281</a>
+
+        <div class="contact-links">
+          <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="contact-row">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
+            <span>GitHub — @Naga-Vignesh</span>
+          </a>
+          <a href="#" class="contact-row">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span>LinkedIn — Available on request</span>
+          </a>
+          <a href="mailto:marnen88@rowan.edu" class="contact-row">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 7l10 7 10-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span>marnen88@rowan.edu</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate style="--reveal-delay: 0.15s">
+        <label class="form-field">
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+        </label>
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="your@email.com" />
+        </label>
+        <label class="form-field">
+          <span>Message</span>
+          <textarea name="message" rows="5" required placeholder="What's on your mind?"></textarea>
+        </label>
+        <button type="submit" class="btn btn-submit">Send Message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ─────────────────────────────────────────────
+     FOOTER
+───────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2025 Naga Vignesh Marneni · Built with purpose.</span>
+    <div class="footer-social">
+      <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
+      </a>
+      <a href="mailto:marnen88@rowan.edu" aria-label="Email">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 7l10 7 10-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─────────────────────────────────────────────
+     CHATBOT WIDGET
+───────────────────────────────────────────── -->
+<button class="chat-fab" id="chatFab" aria-label="Open portfolio assistant">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/>
+    <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span class="chat-fab-pulse" aria-hidden="true"></span>
+</button>
+
+<section class="chat-panel" id="chatPanel" aria-hidden="true" aria-label="Portfolio assistant">
+  <header class="chat-header">
+    <div class="chat-avatar" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+    </div>
+    <div class="chat-title-block">
+      <strong>Vignesh's Assistant</strong>
+      <span class="chat-status"><span class="chat-dot-online"></span>Online</span>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </header>
-
-  <!-- Mobile drawer -->
-  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-    <a href="#home" class="drawer-link">Home</a>
-    <a href="#about" class="drawer-link">About</a>
-    <a href="#skills" class="drawer-link">Skills</a>
-    <a href="#projects" class="drawer-link">Projects</a>
-    <a href="#certifications" class="drawer-link">Certifications</a>
-    <a href="#contact" class="drawer-link">Contact</a>
-  </aside>
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-
-  <main>
-    <!-- ============= HERO ============= -->
-    <section class="hero" id="home">
-      <div class="hero-mesh" aria-hidden="true"></div>
-
-      <div class="hero-inner container">
-        <div class="hero-content">
-          <span class="hero-label">Cybersecurity &amp; Networking</span>
-          <h1 class="hero-title">Naga Vignesh</h1>
-          <div class="hero-subtitle">
-            <span id="typed"></span>
-          </div>
-          <p class="hero-bio">
-            Graduate student at Rowan University building secure infrastructure,
-            breaking systems in labs, and ranking in the top 4% nationally on the
-            National Cyber League.
-          </p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">View My Work</a>
-            <a href="https://drive.google.com/file/d/1sEK-DGw2i6rEwUbTXDGWu9tD7NX-kUgu/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline">Download CV</a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="hex-frame">
-            <div class="hex-inner">
-              <span class="hex-mono">NV</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============= ABOUT ============= -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-num" aria-hidden="true">01</div>
-        <span class="eyebrow">About</span>
-        <h2 class="section-title">Who I am</h2>
-
-        <div class="about-grid">
-          <div class="about-left reveal">
-            <blockquote class="pull-quote">
-              I build networks that stay up — and break them in lab so they don't break in production.
-            </blockquote>
-            <p class="about-bio">
-              I'm a technically motivated professional with hands-on experience in networking,
-              cybersecurity fundamentals, and systems support. My background includes telecom
-              provisioning environments where uptime, accuracy, and rapid incident resolution
-              were critical.
-            </p>
-            <p class="about-bio">
-              Currently pursuing my M.S. in Computer Science at Rowan University (GPA 3.8/4.0),
-              I complement my education with industry certifications and practical projects
-              across offensive security, enterprise networking, and DevOps automation.
-            </p>
-
-            <div class="stats">
-              <div class="stat">
-                <span class="stat-number" data-target="5" data-suffix="">0</span>
-                <span class="stat-label">Certifications</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number" data-target="3" data-suffix="+">0</span>
-                <span class="stat-label">Lab Projects</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number" data-target="4" data-suffix="%">0</span>
-                <span class="stat-label">Top NCL Rank</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number" data-target="2" data-suffix=" yrs">0</span>
-                <span class="stat-label">Industry XP</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-right reveal">
-            <div class="terminal-card">
-              <div class="terminal-bar">
-                <span class="dot dot-r"></span>
-                <span class="dot dot-y"></span>
-                <span class="dot dot-g"></span>
-                <span class="terminal-title">vignesh@rowan ~</span>
-              </div>
-              <div class="terminal-body" id="terminalBody">
-                <div class="term-line"><span class="term-prompt">$</span> whoami</div>
-                <div class="term-line term-out" data-term="naga_vignesh_marneni"></div>
-                <div class="term-line"><span class="term-prompt">$</span> cat profile.json</div>
-                <div class="term-line term-out" data-term='{ "role": "Network Security Engineer" }'></div>
-                <div class="term-line term-out" data-term='{ "location": "Glassboro, NJ" }'></div>
-                <div class="term-line term-out" data-term='{ "edu": "M.S. CS @ Rowan University" }'></div>
-                <div class="term-line term-out" data-term='{ "focus": ["pentest","SOC","networking"] }'></div>
-                <div class="term-line"><span class="term-prompt">$</span> uptime</div>
-                <div class="term-line term-out" data-term="status: ready — available for hire"></div>
-                <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">_</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============= SKILLS ============= -->
-    <section class="section section-alt" id="skills">
-      <div class="container">
-        <div class="section-num" aria-hidden="true">02</div>
-        <span class="eyebrow">Skills</span>
-        <h2 class="section-title">Technical arsenal</h2>
-
-        <div class="skills-grid">
-          <div class="skill-group reveal">
-            <h3>Network Security</h3>
-            <ul class="skill-pills">
-              <li class="pill">OSPF / VLANs / ACLs</li>
-              <li class="pill">Cisco IOS</li>
-              <li class="pill">SD-WAN</li>
-              <li class="pill">Firewall Design</li>
-              <li class="pill">Structured Cabling</li>
-              <li class="pill">Network Troubleshooting</li>
-            </ul>
-          </div>
-
-          <div class="skill-group reveal">
-            <h3>Penetration Testing</h3>
-            <ul class="skill-pills">
-              <li class="pill">OWASP Top 10</li>
-              <li class="pill">Vulnerability Scanning</li>
-              <li class="pill">Recon &amp; Enumeration</li>
-              <li class="pill">Web Exploitation</li>
-              <li class="pill">Incident Response</li>
-              <li class="pill">Digital Forensics</li>
-            </ul>
-          </div>
-
-          <div class="skill-group reveal">
-            <h3>Tools &amp; Platforms</h3>
-            <ul class="skill-pills">
-              <li class="pill">Wireshark</li>
-              <li class="pill">Splunk</li>
-              <li class="pill">Docker</li>
-              <li class="pill">Jenkins</li>
-              <li class="pill">AWS</li>
-              <li class="pill">Linux</li>
-              <li class="pill">Git</li>
-              <li class="pill">Nmap</li>
-              <li class="pill">Hydra</li>
-            </ul>
-          </div>
-
-          <div class="skill-group reveal">
-            <h3>Programming</h3>
-            <ul class="skill-pills">
-              <li class="pill">Python</li>
-              <li class="pill">Bash</li>
-              <li class="pill">SQL</li>
-              <li class="pill">HTML / CSS</li>
-              <li class="pill">Bootstrap</li>
-              <li class="pill">REST APIs</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============= PROJECTS ============= -->
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-num" aria-hidden="true">03</div>
-        <span class="eyebrow">Projects</span>
-        <h2 class="section-title">Field deployments</h2>
-
-        <div class="projects-list">
-          <article class="project-card reveal">
-            <div class="project-num">01</div>
-            <div class="project-body">
-              <h3 class="project-title">Dockerized Web App with CI/CD</h3>
-              <p class="project-desc">
-                End-to-end deployment pipeline using Docker, Jenkins, and AWS.
-                Containerized builds eliminated environment drift; Jenkins handled
-                automated test and ship cycles.
-              </p>
-              <div class="tech-tags">
-                <span>Docker</span><span>Jenkins</span><span>AWS</span><span>CI/CD</span>
-              </div>
-            </div>
-            <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </article>
-
-          <article class="project-card featured reveal">
-            <div class="project-num">02</div>
-            <div class="project-body">
-              <h3 class="project-title">Mission Pumpkin — Vulnerable Web App</h3>
-              <p class="project-desc">
-                A deliberately vulnerable web application modeled on the OWASP Top 10.
-                Performed reconnaissance and exploitation using Nmap and Hydra.
-                Mapped complete attack chains and documented remediations.
-              </p>
-              <div class="tech-tags">
-                <span>OWASP</span><span>Nmap</span><span>Hydra</span><span>Pen Testing</span><span>Security Analysis</span>
-              </div>
-            </div>
-            <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-num">03</div>
-            <div class="project-body">
-              <h3 class="project-title">Multi-City Enterprise Network</h3>
-              <p class="project-desc">
-                Scalable network linking Glassboro, Gloucester, and Atlantic City over
-                Frame Relay. DHCP/DNS for 100+ devices with centralized HTTP and FTP services.
-                Focused on fault tolerance and secure inter-site communication.
-              </p>
-              <div class="tech-tags">
-                <span>Cisco</span><span>OSPF</span><span>Frame Relay</span><span>DHCP/DNS</span><span>Enterprise</span>
-              </div>
-            </div>
-            <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="project-link">GitHub →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============= CERTIFICATIONS ============= -->
-    <section class="section section-alt" id="certifications">
-      <div class="container">
-        <div class="section-num" aria-hidden="true">04</div>
-        <span class="eyebrow">Certifications</span>
-        <h2 class="section-title">Credentials</h2>
-
-        <div class="certs-grid">
-          <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/662nhlyb_CompTIA%20Network%2B%20ce%20certificate.pdf" target="_blank" rel="noopener" class="cert-card reveal">
-            <span class="cert-issuer">CompTIA</span>
-            <h3>Network+</h3>
-            <span class="cert-year">2025</span>
-            <span class="cert-link">View credential →</span>
-          </a>
-
-          <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/17dy4510_CompTIA%20Security%2B%20ce%20certificate.pdf" target="_blank" rel="noopener" class="cert-card reveal">
-            <span class="cert-issuer">CompTIA</span>
-            <h3>Security+</h3>
-            <span class="cert-year">2025</span>
-            <span class="cert-link">View credential →</span>
-          </a>
-
-          <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/cve0govt_Cisco%20Certified%20Network%20Associate%20certificate.pdf" target="_blank" rel="noopener" class="cert-card reveal">
-            <span class="cert-issuer">Cisco</span>
-            <h3>CCNA</h3>
-            <span class="cert-year">2024</span>
-            <span class="cert-link">View credential →</span>
-          </a>
-
-          <a href="https://customer-assets.emergentagent.com/job_fe69011f-7682-438a-9cda-d14c81a3296f/artifacts/jjuh5c9a_AZ900.pdf" target="_blank" rel="noopener" class="cert-card reveal">
-            <span class="cert-issuer">Microsoft</span>
-            <h3>Azure AZ-900</h3>
-            <span class="cert-year">2024</span>
-            <span class="cert-link">View credential →</span>
-          </a>
-
-          <div class="cert-card reveal">
-            <span class="cert-issuer">Microsoft</span>
-            <h3>SC-900</h3>
-            <span class="cert-year">2024</span>
-            <span class="cert-link muted">On request</span>
-          </div>
-
-          <div class="cert-card cert-trophy reveal">
-            <span class="cert-issuer trophy-issuer">National Cyber League</span>
-            <h3>Diamond 2 — Top 4%</h3>
-            <span class="cert-year">Spring 2025</span>
-            <span class="cert-link muted">National ranking</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============= CONTACT ============= -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-num" aria-hidden="true">05</div>
-        <span class="eyebrow">Contact</span>
-        <h2 class="section-title">Get in touch</h2>
-
-        <div class="contact-layout">
-          <div class="contact-left reveal">
-            <a href="mailto:marnen88@rowan.edu" class="contact-email">marnen88@rowan.edu</a>
-            <p class="contact-note">Available for internships, full-time, and consulting in network security.</p>
-
-            <div class="contact-links">
-              <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" class="contact-row">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
-                <span>GitHub — @Naga-Vignesh</span>
-              </a>
-              <a href="mailto:marnen88@rowan.edu" class="contact-row">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                <span>marnen88@rowan.edu</span>
-              </a>
-              <a href="tel:+18565264281" class="contact-row">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.34 1.9.63 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.29 1.85.5 2.81.63A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                <span>+1 (856) 526-4281</span>
-              </a>
-            </div>
-          </div>
-
-          <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/your_form_id" method="POST" novalidate>
-            <label class="form-field">
-              <span>Name</span>
-              <input type="text" name="name" required autocomplete="name" />
-            </label>
-            <label class="form-field">
-              <span>Email</span>
-              <input type="email" name="email" required autocomplete="email" />
-            </label>
-            <label class="form-field">
-              <span>Message</span>
-              <textarea name="message" rows="5" required></textarea>
-            </label>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============= FOOTER ============= -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="footer-text">© 2025 Naga Vignesh Marneni</span>
-      <div class="footer-social">
-        <a href="https://github.com/Naga-Vignesh" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.94 10.94 0 015.74 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.26 5.65.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z" fill="currentColor"/></svg>
-        </a>
-        <a href="mailto:marnen88@rowan.edu" aria-label="Email">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 5h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-        </a>
-      </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg ai">Hi! Ask me about Vignesh's experience, skills, or projects.</div>
+    <div class="chat-suggestions" id="chatSuggestions">
+      <button class="suggest" data-q="Tell me about your experience.">Tell me about your experience</button>
+      <button class="suggest" data-q="What are your skills?">What are your skills?</button>
+      <button class="suggest" data-q="Are you available for hire?">Available for hire?</button>
     </div>
-  </footer>
+  </div>
+  <form class="chat-input-form" id="chatForm" autocomplete="off">
+    <input type="text" id="chatInput" placeholder="Ask something…" aria-label="Message" required />
+    <button type="submit" aria-label="Send">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    </button>
+  </form>
+</section>
 
-  <!-- ============= AI CHATBOT WIDGET ============= -->
-  <button class="chat-fab" id="chatFab" aria-label="Open chat assistant">
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/>
-      <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <span class="chat-fab-pulse" aria-hidden="true"></span>
-  </button>
-
-  <section class="chat-panel" id="chatPanel" aria-hidden="true" aria-label="Chat with Vignesh's assistant">
-    <header class="chat-header">
-      <div class="chat-avatar" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-      </div>
-      <div class="chat-title">
-        <strong>Ask about Vignesh</strong>
-        <span class="chat-status"><span class="chat-dot-online"></span>Online</span>
-      </div>
-      <button class="chat-close" id="chatClose" aria-label="Close chat">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-    </header>
-
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg ai">
-        Hi! I'm Vignesh's portfolio assistant. Ask me about his skills, projects, or how to reach him.
-      </div>
-      <div class="chat-suggestions" id="chatSuggestions">
-        <button class="suggest" data-q="What are your skills?">What are your skills?</button>
-        <button class="suggest" data-q="Tell me about your projects.">Tell me about your projects</button>
-        <button class="suggest" data-q="Are you available for hire?">Are you available for hire?</button>
-      </div>
-    </div>
-
-    <form class="chat-input" id="chatForm" autocomplete="off">
-      <input type="text" id="chatInput" placeholder="Type a message…" aria-label="Message" required />
-      <button type="submit" aria-label="Send">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </form>
-  </section>
-
-  <!-- Only Typed.js — no GSAP, no tsParticles, no AOS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.min.js" defer></script>
-
-  <script src="js/main.js" defer></script>
-  <script src="js/animations.js" defer></script>
-  <script src="js/chatbot.js" defer></script>
+<!-- ─────────────────────────────────────────────
+     SCRIPTS — CDN then local, all deferred
+───────────────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" defer></script>
+<script src="js/hero-3d.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/chatbot.js" defer></script>
 </body>
 </html>

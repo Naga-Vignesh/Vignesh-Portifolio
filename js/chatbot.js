@@ -1,116 +1,91 @@
-/* ===========================================================
-   chatbot.js — floating widget that calls /api/chat
-   The Gemini API key lives only on the server (Vercel env var)
-   =========================================================== */
+/* ============================================================
+   chatbot.js — Floating widget calling /api/chat
+   API key never exposed to frontend.
+   ============================================================ */
 
 (() => {
   'use strict';
 
-  const fab = document.getElementById('chatFab');
-  const panel = document.getElementById('chatPanel');
-  const closeBtn = document.getElementById('chatClose');
-  const messagesEl = document.getElementById('chatMessages');
-  const suggestEl = document.getElementById('chatSuggestions');
-  const form = document.getElementById('chatForm');
-  const input = document.getElementById('chatInput');
+  const fab        = document.getElementById('chatFab');
+  const panel      = document.getElementById('chatPanel');
+  const closeBtn   = document.getElementById('chatClose');
+  const messages   = document.getElementById('chatMessages');
+  const suggestEl  = document.getElementById('chatSuggestions');
+  const form       = document.getElementById('chatForm');
+  const input      = document.getElementById('chatInput');
 
   if (!fab || !panel) return;
 
-  // Conversation history sent to the server with each call
   const history = [];
-  let busy = false;
+  let   busy    = false;
 
-  /* ---------- Open / close ---------- */
-  const openPanel = () => {
-    panel.classList.add('open');
-    panel.setAttribute('aria-hidden', 'false');
-    setTimeout(() => input?.focus(), 250);
-  };
-  const closePanel = () => {
-    panel.classList.remove('open');
-    panel.setAttribute('aria-hidden', 'true');
-  };
+  /* ── Open / close ── */
+  const open  = () => { panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); setTimeout(() => input?.focus(), 260); };
+  const close = () => { panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); };
 
-  fab.addEventListener('click', () => {
-    panel.classList.contains('open') ? closePanel() : openPanel();
-  });
-  closeBtn?.addEventListener('click', closePanel);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
-  });
+  fab.addEventListener('click', () => panel.classList.contains('open') ? close() : open());
+  closeBtn?.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
 
-  /* ---------- Suggested questions ---------- */
-  suggestEl?.addEventListener('click', (e) => {
+  /* ── Suggested starters ── */
+  suggestEl?.addEventListener('click', e => {
     const btn = e.target.closest('.suggest');
     if (!btn) return;
-    const q = btn.dataset.q || btn.textContent.trim();
-    sendMessage(q);
+    send(btn.dataset.q || btn.textContent.trim());
     suggestEl.remove();
   });
 
-  /* ---------- Submit ---------- */
-  form?.addEventListener('submit', (e) => {
+  /* ── Submit ── */
+  form?.addEventListener('submit', e => {
     e.preventDefault();
     const text = input.value.trim();
     if (!text || busy) return;
-    sendMessage(text);
+    send(text);
     input.value = '';
-    if (suggestEl?.parentNode) suggestEl.remove();
+    suggestEl?.remove();
   });
 
-  /* ---------- Render helpers ---------- */
-  function appendMsg(role, text, className) {
-    const div = document.createElement('div');
-    div.className = `chat-msg ${className || role}`;
-    div.textContent = text;
-    messagesEl.appendChild(div);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-    return div;
+  /* ── UI helpers ── */
+  function addMsg(role, text, cls) {
+    const d = document.createElement('div');
+    d.className = `chat-msg ${cls || role}`;
+    d.textContent = text;
+    messages.appendChild(d);
+    messages.scrollTop = messages.scrollHeight;
+    return d;
   }
-  function appendTyping() {
+  function addTyping() {
     const t = document.createElement('div');
-    t.className = 'chat-typing';
+    t.id = 'chatTyping'; t.className = 'chat-typing';
     t.innerHTML = '<span></span><span></span><span></span>';
-    t.id = 'chatTyping';
-    messagesEl.appendChild(t);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    messages.appendChild(t);
+    messages.scrollTop = messages.scrollHeight;
   }
-  function removeTyping() {
-    document.getElementById('chatTyping')?.remove();
-  }
+  function removeTyping() { document.getElementById('chatTyping')?.remove(); }
 
-  /* ---------- Core: send to /api/chat ---------- */
-  async function sendMessage(message) {
+  /* ── Core send ── */
+  async function send(message) {
     if (busy) return;
     busy = true;
-    appendMsg('user', message);
+    addMsg('user', message);
     history.push({ role: 'user', content: message });
-    appendTyping();
+    addTyping();
 
     try {
       const res = await fetch('/api/chat', {
-        method: 'POST',
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, history: history.slice(-12) }),
+        body:    JSON.stringify({ message, history: history.slice(-12) }),
       });
-
       removeTyping();
-
-      if (!res.ok) {
-        const errBody = await res.json().catch(() => ({}));
-        throw new Error(errBody.error || `HTTP ${res.status}`);
-      }
-      const data = await res.json();
-      const reply = (data && data.reply) || 'Sorry — no response.';
-      appendMsg('ai', reply);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data  = await res.json();
+      const reply = data?.reply || 'Sorry — no response.';
+      addMsg('ai', reply);
       history.push({ role: 'assistant', content: reply });
     } catch (err) {
       removeTyping();
-      appendMsg(
-        'ai',
-        'I could not reach the assistant right now. Please try again, or email marnen88@rowan.edu.',
-        'error'
-      );
+      addMsg('ai', 'Assistant unavailable right now. Email marnen88@rowan.edu directly.', 'error');
       console.error('[chatbot]', err);
     } finally {
       busy = false;

@@ -1,50 +1,40 @@
-/* ===========================================================
-   animations.css — CSS-only scroll reveals via .reveal class
-   JS adds .in-view when element enters viewport.
-   Content is ALWAYS visible — animation only enhances.
-   =========================================================== */
+/* ============================================================
+   animations.css — Scroll reveal system
+   Rule: content is ALWAYS visible. Animation enhances only.
+   Safety: 3s fallback forces visibility if JS is slow/missing.
+   ============================================================ */
 
-/* Reveal: elements start slightly offset, animate in when visible */
 .reveal {
-  opacity: 0.0;
-  transform: translateY(24px);
-  transition: opacity 600ms cubic-bezier(.2,.6,.3,1), transform 600ms cubic-bezier(.2,.6,.3,1);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity  0.7s calc(var(--reveal-delay, 0s)) ease,
+    transform 0.7s calc(var(--reveal-delay, 0s)) ease;
 }
-.reveal.in-view {
+
+/* JS adds .visible via IntersectionObserver */
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* SAFETY NET: if JS fails, everything is still visible */
-@media (scripting: none) {
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-/* Also use noscript-friendly fallback via timeout —
-   if .in-view is never added within 3s, show anyway */
+/* Safety net: if JS is blocked or slow, show everything after 3s */
 @keyframes forceVisible {
   to { opacity: 1; transform: translateY(0); }
 }
 .reveal {
   animation: forceVisible 0.001ms 3s forwards;
 }
-.reveal.in-view {
+.reveal.visible {
   animation: none;
 }
 
-/* Typed.js cursor styling */
-.typed-cursor {
-  font-weight: 400;
-  color: var(--cyan);
-  animation: blink 1s steps(2) infinite;
-}
+/* No-JS: <noscript> in index.html sets opacity:1 directly */
 
-/* Reduced motion: disable all reveal transitions */
+/* Prefers-reduced-motion: skip entirely */
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal.visible {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
