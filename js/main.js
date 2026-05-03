@@ -92,43 +92,36 @@
 
   /* ── Stat counters (count-up on scroll) ── */
   function initCounters() {
-    const counters = document.querySelectorAll('.stat-num');
-    if (!counters.length) return;
-
-    const counterObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting || entry.target.dataset.counted) return;
-        entry.target.dataset.counted = 'true';
-
-        const el       = entry.target;
-        const target   = +el.dataset.target;
-        const suffix   = el.dataset.suffix || '';
-        const duration = 2000;
-        const step     = target / (duration / 16);
-        let   current  = 0;
-
+  const counters = document.querySelectorAll('.stat-num');
+  if (!counters.length) return;
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting || entry.target.dataset.counted) return;
+      entry.target.dataset.counted = 'true';
+      const el      = entry.target;
+      const target  = +el.dataset.target;
+      const suffix  = el.dataset.suffix || '';
+      setTimeout(() => {
+        let current = 0;
         const timer = setInterval(() => {
-          current += step;
+          current += target / 80;
           if (current >= target) {
             current = target;
             clearInterval(timer);
           }
           el.textContent = Math.floor(current) + suffix;
-        }, 16);
-
-        counterObs.unobserve(el);
-      });
-    }, { threshold: 0.1 });
-
-    counters.forEach(c => counterObs.observe(c));
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCounters);
-  } else {
-    initCounters();
-  }
-
+        }, 20);
+      }, 600);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+  counters.forEach(c => counterObs.observe(c));
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCounters);
+} else {
+  initCounters();
+}
   /* ── Terminal typewriter ── */
   function initTerminal() {
     const termBody = document.getElementById('terminalBody');
