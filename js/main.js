@@ -1,7 +1,7 @@
 /* ============================================================
-   main.js — Navbar, mobile nav, smooth scroll, stat counters,
-   terminal typing, contact form, matrix easter egg.
-   No GSAP. No magnetic. Pure vanilla JS.
+   main.js — Navbar, mobile nav, smooth scroll, scrollspy,
+   contact form, matrix easter egg.
+   Counters + terminal typewriter live in animations.js.
    ============================================================ */
 
 (() => {
@@ -19,23 +19,37 @@
   }, { passive: true });
   navbar?.classList.toggle('scrolled', window.scrollY > 60);
 
-  /* ── Active nav link ── */
-  const navLinks = $$('.nav-link');
-  const sectionIds = ['home', 'about', 'experience', 'skills', 'projects', 'certifications', 'contact'];
-  const pageSections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  /* ── Active nav link (IntersectionObserver scrollspy) ── */
+  function initScrollSpy() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    if (!sections.length || !navLinks.length) return;
 
-  function updateActive() {
-    const mid = window.scrollY + window.innerHeight * 0.45;
-    let active = pageSections[0]?.id || 'home';
-    for (const sec of pageSections) {
-      if (sec.offsetTop <= mid) active = sec.id;
-    }
-    navLinks.forEach(l =>
-      l.classList.toggle('active', l.getAttribute('href') === `#${active}`)
-    );
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '-80px 0px -40% 0px',
+    });
+
+    sections.forEach(s => spy.observe(s));
   }
-  window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollSpy);
+  } else {
+    initScrollSpy();
+  }
 
   /* ── Smooth scroll ── */
   function closeMobileNav() {
@@ -90,99 +104,12 @@
     revealEls.forEach(el => io.observe(el));
   }
 
-  /* ── Stat counters (count-up on scroll) ── */
-  function initCounters() {
-    const counters = document.querySelectorAll('.stat-num');
-    if (!counters.length) return;
-
-    const counterObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting || entry.target.dataset.counted) return;
-        entry.target.dataset.counted = 'true';
-
-        const el       = entry.target;
-        const target   = +el.dataset.target;
-        const suffix   = el.dataset.suffix || '';
-        const duration = 2000;
-        const step     = target / (duration / 16);
-        let   current  = 0;
-
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          el.textContent = Math.floor(current) + suffix;
-        }, 16);
-
-        counterObs.unobserve(el);
-      });
-    }, { threshold: 0.1 });
-
-    counters.forEach(c => counterObs.observe(c));
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCounters);
-  } else {
-    initCounters();
-  }
-
-  /* ── Terminal typewriter ── */
-  function initTerminal() {
-    const termBody = document.getElementById('terminalBody');
-    if (!termBody) return;
-
-    const outLines = termBody.querySelectorAll('[data-term]');
-    let started = false;
-
-    const termIO = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting || started) return;
-        started = true;
-        termIO.disconnect();
-        let delay = 400;
-        outLines.forEach(line => {
-          const text = line.dataset.term || '';
-          setTimeout(() => typeOut(line, text, 22), delay);
-          delay += text.length * 22 + 400; /* 400ms pause between command output */
-        });
-      });
-    }, { threshold: 0.1 });
-
-    termIO.observe(termBody);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTerminal);
-  } else {
-    initTerminal();
-  }
-
-  function typeOut(node, text, speed) {
-    let i = 0;
-    const tick = () => {
-      node.textContent = text.slice(0, ++i);
-      if (i < text.length) setTimeout(tick, speed);
-    };
-    tick();
-  }
-
   /* ── Contact form ── */
   const form       = $('#contactForm');
   const formStatus = $('#formStatus');
   form?.addEventListener('submit', async e => {
     e.preventDefault();
     const action = form.getAttribute('action') || '';
-
-    if (action.includes('YOUR_FORM_ID')) {
-      if (formStatus) {
-        formStatus.textContent = 'Replace YOUR_FORM_ID in index.html with your Formspree form ID.';
-        formStatus.className   = 'form-status error';
-      }
-      return;
-    }
 
     if (formStatus) {
       formStatus.textContent = 'Sending…';

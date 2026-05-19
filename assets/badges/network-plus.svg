@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340" width="340" height="340">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#c8102e"/>
+      <stop offset="100%" stop-color="#7a0014"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="170" cy="170" r="165" fill="url(#bg)"/>
+  <circle cx="170" cy="170" r="165" fill="none" stroke="#ffffff" stroke-width="6" stroke-opacity="0.15"/>
+  <circle cx="170" cy="170" r="148" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.2"/>
+
+  <!-- CompTIA stylized mark: stacked diamond shapes -->
+  <g fill="#ffffff" opacity="0.95" filter="url(#glow)" transform="translate(170,115)">
+    <!-- Top diamond -->
+    <polygon points="0,-30 24,-8 0,14 -24,-8" fill="#ffffff" opacity="0.5"/>
+    <!-- Middle left diamond -->
+    <polygon points="-26,-4 -2,-22 -2,0 -26,18" fill="#ffffff" opacity="0.75"/>
+    <!-- Middle right diamond -->
+    <polygon points="26,-4 2,-22 2,0 26,18" fill="#ffffff" opacity="0.75"/>
+    <!-- Bottom diamond -->
+    <polygon points="0,22 24,0 0,-22 -24,0" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+  </g>
+
+  <!-- N+ large text -->
+  <text x="170" y="205" text-anchor="middle"
+        font-family="'Arial Black', Arial, sans-serif"
+        font-size="52" font-weight="900" letter-spacing="2"
+        fill="#ffffff" filter="url(#glow)">N+</text>
+
+  <!-- Subtitle -->
+  <text x="170" y="228" text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="12.5" font-weight="400" letter-spacing="1"
+        fill="#f4a4b0">CompTIA Network+</text>
+
+  <!-- Bottom wordmark -->
+  <text x="170" y="279" text-anchor="middle"
+        font-family="'Arial Black', Arial, sans-serif"
+        font-size="15" font-weight="900" letter-spacing="4"
+        fill="#ffffff" opacity="0.65">CompTIA</text>
+</svg>
