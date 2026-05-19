@@ -12,6 +12,10 @@
   const $$ = (sel) => document.querySelectorAll(sel);
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ── Dynamic copyright year ── */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   /* ── Navbar scroll state ── */
   const navbar = $('#navbar');
   window.addEventListener('scroll', () => {
